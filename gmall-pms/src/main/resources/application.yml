@@ -1,0 +1,17 @@
+logging:
+  level:
+    com.atguigu.gmall:  debug
+
+#返回json的全局时间格式
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  rabbitmq:
+    host: 192.168.192.168
+    virtual-host: /gmall
+    username: yu
+    password: yu
+
+

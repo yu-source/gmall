@@ -1,0 +1,71 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: pms-route # 商品路由
+          uri: lb://pms-service
+          predicates:
+            - Path=/pms/**
+        - id: sms-route # 营销路由
+          uri: lb://sms-service
+          predicates:
+            - Path=/sms/**
+        - id: wms-route # 库存路由
+          uri: lb://wms-service
+          predicates:
+            - Path=/wms/**
+        - id: oms-route # 订单路由
+          uri: lb://oms-service
+          predicates:
+            - Path=/oms/**
+        - id: ums-route # 用户路由
+          uri: lb://ums-service
+          predicates:
+            - Path=/ums/**
+        - id: search-route # 搜索路由
+          uri: lb://search-service
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        - id: index-route # 首页路由
+          uri: lb://index-service
+          predicates:
+            - Path=/api/index/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        - id: item-route # 商品详情路由
+          uri: lb://item-service
+          predicates:
+            - Path=/api/item/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        - id: auth-route # 授权中心
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+        - id: cart-route # 购物车服务
+          uri: lb://cart-service
+          predicates:
+            - Path=/api/cart/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+        - id: order-route # 订单服务
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}
+
+auth:
+  jwt:
+    publicKeyPath: F:\\IdeaProjects\\gmall\\secret\\rsa.pub
+    cookieName: GMALL_TOKEN
+

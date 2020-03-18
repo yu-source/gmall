@@ -1,0 +1,20 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.192.168
+  rabbitmq:
+    host: 192.168.192.168
+    virtual-host: /gmall
+    username: yu
+    password: yu
+auth:
+  jwt:
+    publicKeyPath: F:\\IdeaProjects\\gmall\\secret\\rsa.pub
+    cookieName: GMALL_TOKEN
+    userKeyName: user-Key # 未登录购物车的唯一标识
+    expireTime: 2592000 # 过期时间，一个月 单位秒

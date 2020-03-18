@@ -1,0 +1,23 @@
+server:
+  port: 8092
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.192.168
+  rabbitmq:
+    host: 192.168.192.168
+    virtual-host: /gmall
+    username: yu
+    password: yu
+auth:
+  jwt:
+    publicKeyPath: F:\\IdeaProjects\\gmall\\secret\\rsa.pub
+    cookieName: GMALL_TOKEN
+gmall:
+  threadPool:
+    corePoolSize: 200
+    maximunPoolSize: 1000
+    keepAliveTime: 30

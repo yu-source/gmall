@@ -1,0 +1,19 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#返回json的全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+auth:
+  jwt:
+    privateKeyPath: F:\\IdeaProjects\\gmall\\secret\\rsa.pri
+    publicKeyPath: F:\\IdeaProjects\\gmall\\secret\\rsa.pub
+    secret: asdfghjkl;'zxcvbnm,./qwertyuiop[]\
+    cookieName: GMALL_TOKEN
+    exprieTime: 180
+
